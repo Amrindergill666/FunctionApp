@@ -1,97 +1,208 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🎯 **Function App** – React Native App
 
-# Getting Started
+Welcome to **Function App**, a robust and modern React Native application integrating Firebase, biometric authentication, native sensors, translations, push notifications, theming, and UI testing — built for scale and performance.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+---
 
-## Step 1: Start Metro
+## 🚀 Getting Started
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+Follow these steps to set up and run the app on your local machine.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+---
 
-```sh
-# Using npm
-npm start
+### 🧱 Prerequisites
 
-# OR using Yarn
-yarn start
+- 🟢 **Node.js** (LTS)
+- 📦 **npm** or **yarn**
+- ⚛️ **React Native CLI**
+- 🛠️ **Android Studio / Xcode**
+- 🔥 **Firebase Project**
+- 📱 Physical device (for camera/sensors/BioAuth testing)
+- ✅ **Maestro CLI** (for UI testing)
+
+---
+
+## 🔥 Firebase Setup
+
+> Firebase powers authentication, database, push, and more.
+
+1. Go to [Firebase Console](https://console.firebase.google.com)
+2. Create a project or use existing
+3. Add Android/iOS apps
+4. Download:
+   - `google-services.json` → `android/app/`
+   - `GoogleService-Info.plist` → `ios/`
+5. Enable:
+   - 🔐 Auth (Email/Password, Google, Phone)
+   - ☁️ Firestore / Realtime DB
+   - 🔔 Cloud Messaging (FCM)
+
+---
+
+## 🧩 Features
+
+| Feature                        | Description |
+|-------------------------------|-------------|
+| 🔐 **BioAuth**                | Fingerprint/Face unlock |
+| 🟦 **Google Auth**            | Sign-in with Google |
+| 🔑 **Phone Login**            | Firebase OTP login |
+| 📷 **Vision Camera**          | High-performance camera |
+| 💥 **Haptics & Vibration**    | Native feedback APIs |
+| 🎛️ **Sensors**               | Accelerometer, Gyroscope |
+| 🔁 **Refresh Button**         | Manual data refresher |
+| 🌍 **Translation**            | Multilingual support |
+| 🔔 **Push via OneSignal**     | FCM + OneSignal |
+| 🧪 **Maestro Testing**        | UI test with `maestro.yaml` |
+| 🌓 **Theming**                | Light/Dark toggle |
+| 🧱 **StatusBar Fix**          | Android 13+ safe handling |
+
+📁 All logic is modular and lives inside `/components/` — each file has library info, usage, and setup comments.
+
+---
+
+## 📦 Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## ▶️ Run the App
 
 ### Android
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+npx react-native run-android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+cd ios
+pod install
+cd ..
+npx react-native run-ios
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
+## 🧱 StatusBar Handling (Android 13+)
+
+To avoid layout shifts due to StatusBar on newer Androids, the following logic is used:
+
+```js
+const isAndroid13OrHigher = Platform.OS === 'android' && Platform.Version >= 33;
+const topPadding = isAndroid13OrHigher ? StatusBar.currentHeight : 0;
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Then applied to your main container:
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```js
+<View style={[styles.container, { paddingTop: topPadding }]}>
+  <StatusBar barStyle="dark-content" />
+</View>
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+✅ This ensures proper padding and avoids overlay glitches on Android 13+.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+---
 
-## Step 3: Modify your app
+## 🌗 Theme Switching (Dark/Light Mode)
 
-Now that you have successfully run the app, let's make changes!
+Theme logic is implemented using `useColorScheme()` and customized React Navigation themes:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+```js
+const isDarkMode = useColorScheme();
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+const MyLightTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+  },
+};
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+const MyDarkTheme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+  },
+};
+```
 
-## Congratulations! :tada:
+Used in navigation container like so:
 
-You've successfully run and modified your React Native App. :partying_face:
+```js
+<NavigationContainer theme={isDarkMode === 'dark' ? MyDarkTheme : MyLightTheme}>
+  {/* App navigation */}
+</NavigationContainer>
+```
 
-### Now what?
+✅ Easily extendable and fully system-aware.
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+---
 
-# Troubleshooting
+## 🧪 Maestro UI Testing
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+> Script-based UI testing with [Maestro](https://maestro.mobile.dev/)
 
-# Learn More
+File: `maestro.yaml` (root)
 
-To learn more about React Native, take a look at the following resources:
+Run tests:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```bash
+maestro test maestro.yaml
+```
+
+---
+
+## 📁 Folder Structure
+
+```
+FunctionApp/
+│
+├── android/
+├── ios/
+├── components/
+│   ├── BioAuth.js
+│   ├── GoogleAuth.js
+│   ├── PhoneNumber.js
+│   ├── Camera.js
+│   ├── Haptic.js
+│   ├── Sensors.js
+│   ├── translator.js
+│   ├── Restart.js
+│   ├── vibration.js
+│   └── ...
+├── maestro.yaml
+├── App.js ← Contains theme & status bar logic
+└── ...
+```
+
+📝 All component files are documented with setup steps, package names, and examples.
+
+---
+
+## 💡 Tips
+
+- Test biometric, camera, and sensors on **physical devices**
+- OneSignal must be linked with Firebase for push
+- Use `.env` to manage sensitive data cleanly
+
+---
+
+## 🧑‍💻 Contributing
+
+Want to improve this app? Fork, branch, and open a PR — all help is welcome 🙌
+
+---
+
+## 📜 License
+
+MIT © [YourNameHere]
+
+---
+
+> Built with ❤️ using **React Native, Firebase, and native APIs**

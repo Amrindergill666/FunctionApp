@@ -5,6 +5,19 @@ import ReactNativeBiometrics from 'react-native-biometrics';
 
 const rnBiometrics = new ReactNativeBiometrics();
 
+/*
+
+  setup of this library
+  1. Install the library:
+    npm install react-native-biometrics --save
+  2. add the following to your android/app/main/AndroidManifest.xml file:
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+
+    
+*/
+
+
 export default function BiometricsAuth({ onSuccess }) {
   const navigation = useNavigation();
   const [biometryType, setBiometryType] = useState(null);
@@ -68,7 +81,7 @@ export default function BiometricsAuth({ onSuccess }) {
       {available && (
         <Button title="Authenticate" onPress={handleAuthenticate} />
       )}
-      
+
       {errorMessage ? <Text style={styles.error}>{errorMessage}</Text> : null}
     </View>
   );
@@ -76,7 +89,7 @@ export default function BiometricsAuth({ onSuccess }) {
 
 const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
-  title: { fontSize: 18, marginBottom: 16, textAlign: 'center',color :'#fff' },
+  title: { fontSize: 18, marginBottom: 16, textAlign: 'center', color: '#fff' },
   error: { color: 'red', marginTop: 16, textAlign: 'center' },
   success: { color: 'green', fontSize: 20, textAlign: 'center' },
 });

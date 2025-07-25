@@ -11,6 +11,30 @@ import {
 import auth from '@react-native-firebase/auth';
 import SmsRetriever from 'react-native-sms-retriever';   // ← NEW
 
+/*
+    setup of this 
+    1. Install the library:
+        npm install react-native-sms-retriever
+    2. Add the following to your android/app/build.gradle file:
+        android {
+            ...
+            defaultConfig {
+                ...
+                minSdkVersion 21
+                ...
+            }
+        }
+    3. Add the following to your android/app/main/AndroidManifest.xml file:
+        <uses-permission android:name="android.permission.RECEIVE_SMS" />
+        <uses-permission android:name="android.permission.READ_SMS" />
+        <uses-permission android:name="android.permission.SEND_SMS" />
+    
+
+
+*/
+
+
+
 export default function PhoneAuthScreen() {
     const [phone, setPhone] = useState('');
     const [confirm, setConfirm] = useState(null);      // Firebase confirmation object

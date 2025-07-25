@@ -3,7 +3,21 @@ import { View, Button, Text, ActivityIndicator, Alert } from 'react-native';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
 
-const WEB_CLIENT_ID = '229668529371-s921695f827ibbbqc63fnli0cha89k5c.apps.googleusercontent.com'; // <- Replace with yours!
+/* 
+    Setup of this library
+    1. Install the library:
+        npm install @react-native-google-signin/google-signin @react-native-firebase/auth
+    2. Follow the setup instructions for Google Sign-In:
+        https://rnfirebase.io/auth/usage#google-sign-in
+    3. Add your web client ID in the WEB_CLIENT_ID constant below.
+    4. Make sure to configure your Firebase project to support Google Sign-In.
+    5. For Android, ensure you have the correct SHA-1 fingerprint set up in your Firebase console.
+    6. For iOS, ensure you have the correct URL schemes set up in your Info.plist.
+
+*/
+
+
+const WEB_CLIENT_ID = '2144242XXXXXXXX.XXXXXXXXXXXX.apps.googleusercontent.com'; // <- Replace with yours!
 
 export default function GoogleSignInButton() {
     const [loading, setLoading] = useState(false);

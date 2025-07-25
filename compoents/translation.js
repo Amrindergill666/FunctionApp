@@ -11,6 +11,20 @@ import { useTranslation } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import '../i18n'; // Import configuration
 
+/* 
+    setup of this library
+    1. Install the library:
+        npm install react-i18next i18next react-native-localize @react-native-async-storage/async-storage
+    2. Configure i18next in a separate file (e.g., i18n.js) and import it here.
+    3. Create translation files in a 'locales' directory (e.g., en.json, es.json, hi.json).
+    4. Wrap your app with the I18nextProvider in your main entry file (e.g., App.js).
+    5. Use the useTranslation hook to access translation functions in your components.
+    6. Use the t function to translate strings in your components.
+    7. Use AsyncStorage to persist the selected language across app restarts.
+    8. Use Intl.DateTimeFormat and Intl.NumberFormat for date and number formatting.
+*/
+
+
 const MultiLanguageDemo = () => {
     const { t, i18n } = useTranslation();
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language);

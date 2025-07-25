@@ -3,6 +3,8 @@ import { Button, Vibration, View } from 'react-native';
 
 
 export default function VibrateExample() {
+
+  
   return (
     <View style={{marginTop: 50,gap:20}}>
       <Button

@@ -21,8 +21,16 @@ globalThis.RNFB_SILENCE_MODULAR_DEPRECATION_WARNINGS = true;
 const Stack = createNativeStackNavigator();
 
 function App() {
+
+
+  // For status Bar padding issue
   const isAndroid13OrHigher = Platform.OS === 'android' && Platform.Version >= 33;
   const topPadding = isAndroid13OrHigher ? StatusBar.currentHeight : 0;
+
+
+  //  FCM permmision
+
+
   // useEffect(() => {
   //   PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS);
   //   const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -31,6 +39,12 @@ function App() {
 
   //   return unsubscribe;
   // }, [])
+
+
+
+  
+  // for theming
+
   const isDarkMode = useColorScheme();
   const MyLightTheme = {
     ...DefaultTheme,

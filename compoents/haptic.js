@@ -2,6 +2,17 @@ import React from 'react';
 import { Button, View, ScrollView, Text } from 'react-native';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 
+
+/*
+  * Haptic Feedback Demo
+  * This component demonstrates various types of haptic feedback available in React Native.
+  * It uses the 'react-native-haptic-feedback' library to trigger different haptic effects.
+  1. Install the library:
+    npm install react-native-haptic-feedback --save
+  2. Link the library (for older versions of React Native):
+      react-native link react-native-haptic-feedback 
+*/
+
 const options = {
   enableVibrateFallback: true,
   ignoreAndroidSystemSettings: false

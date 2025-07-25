@@ -1,0 +1,15 @@
+{
+    "welcome": "Bienvenido",
+    "greeting": "¡Hola {{name}}!",
+    "itemCount_one": "{{count}} artículo",
+    "itemCount_other": "{{count}} artículos",
+    "login": {
+      "title": "Iniciar Sesión",
+      "email": "Correo Electrónico",
+      "password": "Contraseña"
+    },
+    "errors": {
+      "network": "Falló la conexión de red"
+    }
+  }
+  

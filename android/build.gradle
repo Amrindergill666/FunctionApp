@@ -6,6 +6,7 @@ buildscript {
         targetSdkVersion = 35
         ndkVersion = "27.1.12297006"
         kotlinVersion = "2.1.20"
+        googlePlayServicesAuthVersion = "20.7.0"
     }
     repositories {
         google()
@@ -15,7 +16,18 @@ buildscript {
         classpath("com.android.tools.build:gradle")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath 'com.google.gms:google-services:4.4.3'
     }
 }
 
+allprojects {
+   repositories {
+    
+     google()
+    maven { 
+      url("$rootDir/../node_modules/detox/Detox-android")
+    }
+     maven { url 'https://www.jitpack.io' }
+   }
+ }
 apply plugin: "com.facebook.react.rootproject"

@@ -1,0 +1,15 @@
+{
+    "welcome": "Welcome",
+    "greeting": "Hello {{name}}!",
+    "itemCount_one": "{{count}} item",
+    "itemCount_other": "{{count}} items",
+    "login": {
+      "title": "Sign In",
+      "email": "Email Address",
+      "password": "Password"
+    },
+    "errors": {
+      "network": "Network connection failed"
+    }
+  }
+  

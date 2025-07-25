@@ -1,0 +1,16 @@
+{
+    "welcome": "स्वागत है",
+    "greeting": "नमस्ते {{name}}!",
+    "itemCount_one": "{{count}} आइटम",
+    "itemCount_other": "{{count}} आइटम्स",
+    "login": {
+      "title": "साइन इन करें",
+      "email": "ईमेल पता",
+      "password": "पासवर्ड"
+    },
+    "errors": {
+      "network": "नेटवर्क कनेक्शन विफल हुआ"
+    },
+    "success": "सफलता"
+  }
+  

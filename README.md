@@ -201,7 +201,7 @@ Want to improve this app? Fork, branch, and open a PR — all help is welcome �
 
 ## 📜 License
 
-MIT © [YourNameHere]
+MIT © Amrinder singh
 
 ---
 

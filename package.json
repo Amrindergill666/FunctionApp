@@ -26,6 +26,7 @@
     "react-native-biometrics": "^3.0.1",
     "react-native-ble-manager": "^12.1.5",
     "react-native-branch": "^6.7.1",
+    "react-native-copilot": "^3.3.3",
     "react-native-haptic-feedback": "^2.3.3",
     "react-native-localize": "^3.5.1",
     "react-native-onesignal": "^5.2.13",
@@ -33,6 +34,7 @@
     "react-native-safe-area-context": "^5.5.2",
     "react-native-screens": "^4.13.1",
     "react-native-sms-retriever": "^1.1.1",
+    "react-native-svg": "^15.12.0",
     "react-native-vision-camera": "^4.7.1"
   },
   "devDependencies": {
